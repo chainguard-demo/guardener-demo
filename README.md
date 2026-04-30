@@ -8,7 +8,6 @@ This is a demo of the Guardener. Please follow the script in DEMO.md.
 1. Create a fork of this repository
 2. Generate a GitHub IAM identity locally using chainctl by running: `chainctl iam identities create github gh --github-repo={YOUR_REPO} --github-ref=refs/heads/main --role=owner --github-audience=https://github.com/{GITHUB_USER} --parent={YOUR_ORGNAME/ID}`
 3. Create a secret in Settings > Actions called `GUARDENER_DEMO_CHAINCTL_IDENTITY` and assign it the value above.
-4. Open a PR in mono adding your org UIDP to allowed_groups [mono/env/enforce.dev/iac/400-dfc/dfc.tf](https://github.com/chainguard-dev/mono/blob/main/env/enforce.dev/iac/400-dfc/dfc.tf) [example PR]([https://github.com/chainguard-dev/mono/pull/36116](https://github.com/chainguard-dev/mono/pull/36441)) *This update does require a production deployment*
 
 ## Running CI
 1. Access the pipeline in the Actions section
