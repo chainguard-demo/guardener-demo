@@ -36,10 +36,10 @@ jobs:
       id-token: write
     steps:
       - name: Check out repo
-        uses: chainguard-actions/actions-checkout@v4.3.1
+        uses: chainguard-actions/actions-checkout@23ad494bd955551cc56a72afafa44f978de21f4f # v4.3.1
 
       - name: Setup chainctl
-        uses: chainguard-dev/setup-chainctl@v0.5.1
+        uses: chainguard-dev/setup-chainctl@2cddd35a2f120d9973e58094dc6878c93cf58c28 #v0.5.1
 
       - name: Get GitHub OIDC token
         id: oidc
@@ -62,7 +62,7 @@ jobs:
             --non-interactive
 
       - name: Save migrated Dockerfile
-        uses: chainguard-actions/actions-upload-artifact@v4.6.2
+        uses: chainguard-actions/actions-upload-artifact@ae6fbddde3b6b879793bec6dd9a74a07077fe200 #v4.6.2
         with:
           name: Dockerfile.migrated
           path: ./Dockerfile.migrated
@@ -77,10 +77,10 @@ jobs:
       id-token: write
     steps:
       - name: Check out repo
-        uses: chainguard-actions/actions-checkout@v4.3.1
+        uses: chainguard-actions/actions-checkout@23ad494bd955551cc56a72afafa44f978de21f4f # v4.3.1
 
       - name: 'Login to GitHub Container Registry'
-        uses: chainguard-actions/docker-login-action@v4.6.0
+        uses: chainguard-actions/docker-login-action@93c9fb113ac946f14a332842652ec9600e25babc # v4.6.0
         with:
           registry: ghcr.io
           username: ${{github.actor}}
@@ -96,7 +96,7 @@ jobs:
           echo "token=$TOKEN" >> "$GITHUB_OUTPUT"
 
       - name: Setup chainctl
-        uses: chainguard-dev/setup-chainctl@v0.5.1
+        uses: chainguard-dev/setup-chainctl@2cddd35a2f120d9973e58094dc6878c93cf58c28 #v0.5.1
       
       - name: Auth with chainctl using OIDC token
         shell: bash
@@ -106,7 +106,7 @@ jobs:
             --identity-token "${{ steps.oidc.outputs.token }}"
 
       - name: Download migrated Dockerfile
-        uses: chainguard-actions/actions-download-artifact@v4.3.0
+        uses: chainguard-actions/actions-download-artifact@ee0fd4035156db4b7f5f67e3a751b1e3ad3e216a # v4.3.0
         with:
           name: Dockerfile.migrated
           path: ./artifacts
@@ -117,7 +117,7 @@ jobs:
           docker push ghcr.io/${{ inputs.NAMESPACE }}/${{ env.IMAGE_NAME }}:${{ inputs.IMAGE_TAG }}
 
       - name: Scan the image with Grype
-        uses: chainguard-actions/anchore-scan-action@v7.4.0
+        uses: chainguard-actions/anchore-scan-action@5470f64f241ff0b662c1efed80f982517e2340d6 #v7.4.0
         with:
           image: ghcr.io/${{ inputs.NAMESPACE }}/${{ env.IMAGE_NAME }}:${{ inputs.IMAGE_TAG }}
           fail-build: false
