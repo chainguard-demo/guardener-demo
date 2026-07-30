@@ -36,9 +36,9 @@ jobs:
             ghcr.io
 
       - name: Check out code
-        uses: chainguard-actions/actions-checkout@0582da58055303b5af7f918994da1758ec9ca1bc #v6.0.3
+        uses: chainguard-actions/actions-checkout@0582da58055303b5af7f918994da1758ec9ca1bc # v6.0.3
         with:
           persist-credentials: false
 
       - name: Run zizmor
-        uses: chainguard-actions/zizmorcore-zizmor-action@ed5e760c87c3f02dbd8ddcea24ae61fe32781f74 #v0.6.1
+        uses: chainguard-actions/zizmorcore-zizmor-action@ed5e760c87c3f02dbd8ddcea24ae61fe32781f74 # v0.6.1
